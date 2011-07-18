@@ -11,7 +11,7 @@ Stable tag: 1.0.0
 
 == Description ==
 
-"Search by Google" plugin add widget with Google search form.
+"Search by Google" plugin add widget with Google search form. It helps user to search on site using Google search engine.
 
 = Widget options: =
 * "Title" (title of the widget);
