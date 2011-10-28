@@ -7,6 +7,9 @@ Version: 1.1
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
+
+Future features:
+- add support of multiple widgets with search-by-google form;
 */
 
 class WP_Widget_Search_Google extends WP_Widget {
