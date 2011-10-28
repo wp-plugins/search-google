@@ -3,7 +3,7 @@
 Plugin Name: Search by Google
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
 Description: Show Google search form.
-Version: 1.1
+Version: 1.2
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -31,7 +31,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 		}
 		
 ?>
-		<!-- powered by "Search by Google" plugin ver.1.1 (http://wordpress.org/extend/plugins/search-google/) -->
+		<!-- powered by "Search by Google" plugin ver.:1.2 (http://wordpress.org/extend/plugins/search-google/) -->
 		<form method="get" id="tsf" action="http://www.google.com/search" name="f" class="search_google_form">
 			<fieldset>
 				<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
@@ -77,16 +77,11 @@ class WP_Widget_Search_Google extends WP_Widget {
 
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Search_Google");'));
 
-function search_google_jquery_init() {
+function search_google_scripts_styles_init() {
 	if (!is_admin()) {
-		wp_enqueue_script('jquery');
+		//wp_enqueue_script('jquery');
+		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.2' );
+		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.2', 'all' );
 	}
 }
-add_action('init', 'search_google_jquery_init');
-
-
-add_action('wp_head', 'search_google_wp_head');
-function search_google_wp_head() {
-	echo '<script type="text/javascript" src="'.plugins_url().'/search-google/js/search-google.js"></script>'."\n";
-	echo '<link rel="stylesheet" href="'.plugins_url().'/search-google/css/search-google.css" type="text/css" media="all" />'."\n";
-}
+add_action('init', 'search_google_scripts_styles_init');
