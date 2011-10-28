@@ -3,11 +3,10 @@
 Plugin Name: Search by Google
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
 Description: Show Google search form.
-Version: 1.0.0
+Version: 1.1
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
-Author URI: http://web-profile.com.ua/
-
+Author URI: http://web-profile.com.ua/wordpress/
 */
 
 class WP_Widget_Search_Google extends WP_Widget {

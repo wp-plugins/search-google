@@ -4,8 +4,8 @@ Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
 Tags: google, search, widget
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.2.1
-Stable tag: 1.0.0
+Tested up to: 3.3
+Stable tag: 1.1
 
 "Search by Google" plugin add widget with Google search form.
 
@@ -29,6 +29,9 @@ Stable tag: 1.0.0
 2. Google search page after form submit;
 
 == Changelog ==
+
+= 1.1 =
+* Improve input focus behaviour;
 
 = 1.0.0 =
 * Initial release;
