@@ -28,7 +28,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 		}
 		
 ?>
-		<!-- Powered by "Search by Google" plugin ver.1.0.0 -->
+		<!-- powered by "Search by Google" plugin ver.1.1 (http://wordpress.org/extend/plugins/search-google/) -->
 		<form method="get" id="tsf" action="http://www.google.com/search" name="f" class="search_google_form">
 			<fieldset>
 				<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
