@@ -20,7 +20,7 @@ Stable tag: 1.1
 
 [Search by Google plugin page](http://web-profile.com.ua/wordpress/plugins/search-google/)
 
-[WordPress stuff](http://web-profile.com.ua/wordpress/)
+[CMS WordPress](http://web-profile.com.ua/wordpress/)
 
 == Screenshots ==
 
