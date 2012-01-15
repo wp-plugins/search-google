@@ -4,14 +4,14 @@ Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
 Tags: google, search, widget
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.2
+Tested up to: 3.3.1
+Stable tag: 1.3
 
-"Search by Google" plugin add widget with Google search form.
+"Search by Google" plugin adds Google search form widget.
 
 == Description ==
 
-"Search by Google" plugin add widget with Google search form. It helps user to search on site using Google search engine.
+"Search by Google" plugin adds Google search form widget. It helps user to search on site using Google.
 
 = Widget options: =
 * "Title" (title of the widget);
@@ -30,16 +30,19 @@ Stable tag: 1.2
 
 == Changelog ==
 
+= 1.3 =
+* Improved scripts;
+
 = 1.2 =
-* Improve scripts and styles include;
+* Improved scripts and styles include;
 
 = 1.1 =
-* Improve input focus behaviour;
+* Improved input focus behaviour;
 
 = 1.0.0 =
 * Initial release;
 
 == Installation ==
 
-1. Install plugin and activate it on the Plugins page;
+1. Install and activate the plugin on the Plugins page;
 2. Add "Search by Google" widget to your sidebar and customize it;
