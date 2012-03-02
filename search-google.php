@@ -3,7 +3,7 @@
 Plugin Name: Search by Google
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
 Description: Adds Google search form widget.
-Version: 1.3
+Version: 1.4
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -31,8 +31,8 @@ class WP_Widget_Search_Google extends WP_Widget {
 		}
 		
 ?>
-		<!-- "Search by Google" plugin v.1.3 (http://wordpress.org/extend/plugins/search-google/) -->
-		<form method="get" id="tsf" action="http://www.google.com/search" name="f" class="search_google_form">
+		<!-- Search by Google plugin v.1.4 (wordpress.org/extend/plugins/search-google/) -->
+		<form method="get" id="tsf" action="http://www.google.com/search" class="search_google_form">
 			<fieldset>
 				<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
 				<input type="hidden" name="pseudosite" class="pseudosite" value="site:<?php echo $site_search; ?>" />
@@ -80,8 +80,8 @@ add_action('widgets_init', create_function('', 'return register_widget("WP_Widge
 function search_google_scripts_styles_init() {
 	if (!is_admin()) {
 		//wp_enqueue_script('jquery');
-		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.3' );
-		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.3', 'all' );
+		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.4' );
+		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.4', 'all' );
 	}
 }
 add_action('init', 'search_google_scripts_styles_init');

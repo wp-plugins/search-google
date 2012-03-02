@@ -5,7 +5,7 @@ Tags: google, search, widget
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.3
+Stable tag: 1.4
 
 "Search by Google" plugin adds Google search form widget.
 
@@ -30,17 +30,20 @@ Stable tag: 1.3
 
 == Changelog ==
 
+= 1.4 =
+* make plugin html valid (remove name="f" from form);
+
 = 1.3 =
-* Improved scripts;
+* improved scripts;
 
 = 1.2 =
-* Improved scripts and styles include;
+* improved scripts and styles include;
 
 = 1.1 =
-* Improved input focus behaviour;
+* improved input focus behaviour;
 
 = 1.0.0 =
-* Initial release;
+* initial release;
 
 == Installation ==
 
