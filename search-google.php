@@ -2,7 +2,7 @@
 /*
 Plugin Name: Search by Google
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
-Description: Adds Google search form widget.
+Description: Google search on site widget
 Version: 1.4
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
