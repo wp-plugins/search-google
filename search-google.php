@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Search by Google
-Plugin URI: http://web-profile.com.ua/wordpress/plugins/search-google/
+Plugin URI: http://wordpress.org/extend/plugins/search-google/
 Description: Google search on site widget
-Version: 1.4
+Version: 1.5
 Author: webvitaly
-Author Email: webvitaly(at)gmail.com
-Author URI: http://web-profile.com.ua/wordpress/
+Author URI: http://profiles.wordpress.org/webvitaly/
+License: GPLv2 or later
 
 Future features:
 - add support of multiple widgets with search-by-google form;
@@ -23,7 +23,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', $instance['title']);
 		$submit_text = empty($instance['submit_text']) ? __('Search Google') : $instance['submit_text'];
-		$site_search = empty($instance['site_search']) ? get_bloginfo('home') : $instance['site_search'];
+		$site_search = empty($instance['site_search']) ? get_bloginfo('url') : $instance['site_search'];
 		
 		echo $before_widget;
 		if ( $title ){
@@ -31,7 +31,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 		}
 		
 ?>
-		<!-- Search by Google plugin v.1.4 (wordpress.org/extend/plugins/search-google/) -->
+		<!-- Search by Google plugin v.1.5 wordpress.org/extend/plugins/search-google/ -->
 		<form method="get" id="tsf" action="http://www.google.com/search" class="search_google_form">
 			<fieldset>
 				<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
@@ -46,7 +46,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search Google'), 'site_search' => get_bloginfo('home') ) );
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search Google'), 'site_search' => get_bloginfo('url') ) );
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['submit_text'] = strip_tags($new_instance['submit_text']);
 		$instance['site_search'] = strip_tags($new_instance['site_search']);
@@ -54,7 +54,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'submit_text' => 'Google search', 'site_search' => get_bloginfo('home') ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'submit_text' => 'Google search', 'site_search' => get_bloginfo('url') ) );
 		$title = strip_tags($instance['title']);
 		$submit_text = strip_tags($instance['submit_text']);
 		$site_search = strip_tags($instance['site_search']);
@@ -74,14 +74,24 @@ class WP_Widget_Search_Google extends WP_Widget {
 <?php
 	}
 }
-
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Search_Google");'));
 
-function search_google_scripts_styles_init() {
+
+function search_google_unqprfx_scripts_styles_init() {
 	if (!is_admin()) {
 		//wp_enqueue_script('jquery');
-		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.4' );
-		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.4', 'all' );
+		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.5' );
+		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.5', 'all' );
 	}
 }
-add_action('init', 'search_google_scripts_styles_init');
+add_action('init', 'search_google_unqprfx_scripts_styles_init');
+
+
+function search_google_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
+	if ( strpos( $file, 'search-google.php' ) !== false ) {
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/search-google/" title="Need help?">' . __('Support') . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate') . '</a>' ) );
+	}
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'search_google_unqprfx_plugin_meta', 10, 2 );
