@@ -3,14 +3,17 @@ Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
 Tags: google, search, widget, sidebar
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.9
 Stable tag: 1.5
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
 
-Google search on site widget
+Search by Google widget
 
 == Description ==
+
+[Search by Google plugin](http://web-profile.com.ua/wordpress/plugins/search-google/ "Plugin page") |
+[Donate](http://web-profile.com.ua/donate/ "Support the development")
 
 "Search by Google" plugin adds Google search form widget. It helps user to search on site using Google.
 
@@ -19,19 +22,16 @@ Google search on site widget
 * "Submit button text" (if left blank than "Google search" text will be used);
 * "Search on site" (if left blank than Google will search on current site);
 
-**[Search by Google support page](http://web-profile.com.ua/wordpress/plugins/search-google/)**
-
-= Useful plugins: =
-* ["Anti-spam" - block spam in comments](http://wordpress.org/extend/plugins/anti-spam/ "no spam, no captcha")
-* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/ "sanitize filenames to latin")
-* ["Page-list" - show list of pages with shortcodes](http://wordpress.org/extend/plugins/page-list/ "list of pages with shortcodes")
-* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/ "embed iframe")
+= Useful: =
+* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/plugins/filenames-to-latin/ "sanitize filenames to latin")
+* ["Easy to use" - unmask password field and enable 'remember me' by default](http://wordpress.org/plugins/easy-to-use/ "unmask password and enable remember me")
+* ["activetab" - responsive clean theme](http://wordpress.org/themes/activetab "responsive clean theme")
 
 == Screenshots ==
 
-1. "Search by Google" widget
+1. "Search by Google" widget options
 2. "Search by Google" widget on site
-2. Google search page after form submit
+3. Google search page after form submit
 
 == Changelog ==
 
