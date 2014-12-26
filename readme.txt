@@ -3,7 +3,7 @@ Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
 Tags: google, search, widget, sidebar
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -12,9 +12,9 @@ Search by Google widget
 
 == Description ==
 
-[WordPress Pro plugins](http://codecanyon.net/popular_item/by_category?category=wordpress&ref=webvitaly) |
-[Search by Google plugin](http://web-profile.com.ua/wordpress/plugins/search-google/ "Plugin page") |
-[Donate](http://web-profile.com.ua/donate/ "Support the development")
+> [WordPress Pro plugins](http://codecanyon.net/popular_item/by_category?category=wordpress&ref=webvitaly) |
+> [Search by Google plugin](http://web-profile.com.ua/wordpress/plugins/search-google/ "Plugin page") |
+> [Donate](http://web-profile.com.ua/donate/ "Support the development")
 
 "Search by Google" plugin adds Google search form widget. It helps user to search on site using Google.
 
@@ -26,8 +26,8 @@ Search by Google widget
 
 = Useful: =
 * ["Anti-spam" - block spam in comments](http://wordpress.org/plugins/anti-spam/ "no spam, no captcha")
-* ["Anti-spam Pro"](http://codecanyon.net/item/antispam-pro/6491169?ref=webvitaly)
-* ["Easy to use" - unmask password field and enable 'remember me' by default](http://wordpress.org/plugins/easy-to-use/ "unmask password and enable remember me")
+* ["Page-list" - show list of pages with shortcodes](http://wordpress.org/plugins/page-list/ "list of pages with shortcodes")
+* [WordPress Pro plugins](http://codecanyon.net/popular_item/by_category?category=wordpress&ref=webvitaly)
 
 
 == Screenshots ==
