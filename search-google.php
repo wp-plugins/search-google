@@ -17,14 +17,14 @@ define('SEARCH_GOOGLE_VERSION', '1.6');
 class WP_Widget_Search_Google extends WP_Widget {
 
 	function WP_Widget_Search_Google() {
-		$widget_ops = array('classname' => 'widget_search_google', 'description' => __( 'Search by Google widget' ) );
-		$this->WP_Widget('search_google', __('Search by Google'), $widget_ops);
+		$widget_ops = array('classname' => 'widget_search_google', 'description' => __( 'Search by Google widget' , 'search-google') );
+		$this->WP_Widget('search_google', __('Search by Google', 'search-google'), $widget_ops);
 	}
 	
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters('widget_title', $instance['title']);
-		$submit_text = empty($instance['submit_text']) ? __('Search Google') : $instance['submit_text'];
+		$submit_text = empty($instance['submit_text']) ? __('Search by Google', 'search-google') : $instance['submit_text'];
 		$site_search = empty($instance['site_search']) ? get_bloginfo('url') : $instance['site_search'];
 		
 		echo $before_widget;
@@ -35,9 +35,9 @@ class WP_Widget_Search_Google extends WP_Widget {
 ?>
 		<!-- Search by Google plugin v.<?php echo SEARCH_GOOGLE_VERSION; ?> wordpress.org/plugins/search-google/ -->
 		<form method="get" id="tsf" action="http://www.google.com/search" class="search_google_form">
-			<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
+			<input type="text" name="pseudoq" class="pseudoq" value="" />
 			<input type="hidden" name="pseudosite" class="pseudosite" value="site:<?php echo $site_search; ?>" />
-			<input type="text" name="q" class="searchgoogle" title="Search by Google" value="site:<?php echo $site_search; ?> " />
+			<input type="text" name="q" class="searchgoogle" value="site:<?php echo $site_search; ?> " />
 			<input type="submit" name="btnG" value="<?php echo $submit_text; ?>" />
 		</form>
 <?php
@@ -46,7 +46,7 @@ class WP_Widget_Search_Google extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search Google'), 'site_search' => get_bloginfo('url') ) );
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search by Google', 'search-google'), 'site_search' => get_bloginfo('url') ) );
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['submit_text'] = strip_tags($new_instance['submit_text']);
 		$instance['site_search'] = strip_tags($new_instance['site_search']);
@@ -61,16 +61,17 @@ class WP_Widget_Search_Google extends WP_Widget {
 		
 ?>
 			<p>
-				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'search-google'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:'); ?></label>
+				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:', 'search-google'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('submit_text'); ?>" name="<?php echo $this->get_field_name('submit_text'); ?>" type="text" value="<?php echo esc_attr($submit_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:'); ?></label>
+				<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:', 'search-google'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('site_search'); ?>" name="<?php echo $this->get_field_name('site_search'); ?>" type="text" value="<?php echo esc_attr($site_search); ?>" />
+				<div><?php _e('Google will search on current site if left blank.', 'search-google'); ?></div>
 			</p>
 			
 <?php
@@ -91,8 +92,8 @@ add_action('wp_enqueue_scripts', 'search_google_unqprfx_enqueue_scripts');
 
 function search_google_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
 	if ( strpos( $file, 'search-google.php' ) !== false ) {
-		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/search-google/" title="Need help?">' . __('Support') . '</a>' ) );
-		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate') . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/search-google/">' . __('Support', 'search-google') . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/">' . __('Donate', 'search-google') . '</a>' ) );
 	}
 	return $links;
 }
