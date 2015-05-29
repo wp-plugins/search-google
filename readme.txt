@@ -4,7 +4,7 @@ Donate link: http://web-profile.com.ua/donate/
 Tags: google, search, widget, sidebar
 Requires at least: 3.0
 Tested up to: 4.4
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -37,6 +37,10 @@ Search by Google widget.
 3. Google search page after form submit
 
 == Changelog ==
+
+= 1.7 - 2015-05-28 =
+* Translation ready
+* Added Ukrainian translation
 
 = 1.6 - 2015-05-28 =
 * Minor bugfixing

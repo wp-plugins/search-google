@@ -3,7 +3,7 @@
 Plugin Name: Search by Google
 Plugin URI: http://wordpress.org/plugins/search-google/
 Description: Google search on site widget
-Version: 1.6
+Version: 1.7
 Author: webvitaly
 Author URI: http://profiles.wordpress.org/webvitaly/
 License: GPLv3
@@ -60,19 +60,19 @@ class WP_Widget_Search_Google extends WP_Widget {
 		$site_search = strip_tags($instance['site_search']);
 		
 ?>
-			<p>
-				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'search-google'); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
-			</p>
-			<p>
-				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:', 'search-google'); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id('submit_text'); ?>" name="<?php echo $this->get_field_name('submit_text'); ?>" type="text" value="<?php echo esc_attr($submit_text); ?>" />
-			</p>
-			<p>
-				<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:', 'search-google'); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id('site_search'); ?>" name="<?php echo $this->get_field_name('site_search'); ?>" type="text" value="<?php echo esc_attr($site_search); ?>" />
-				<div><?php _e('Google will search on current site if left blank.', 'search-google'); ?></div>
-			</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'search-google'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:', 'search-google'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('submit_text'); ?>" name="<?php echo $this->get_field_name('submit_text'); ?>" type="text" value="<?php echo esc_attr($submit_text); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:', 'search-google'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('site_search'); ?>" name="<?php echo $this->get_field_name('site_search'); ?>" type="text" value="<?php echo esc_attr($site_search); ?>" />
+			<div><?php _e('Google will search on current site if left blank.', 'search-google'); ?></div>
+		</p>
 			
 <?php
 	}
@@ -88,6 +88,12 @@ function search_google_unqprfx_enqueue_scripts() {
 	}
 }
 add_action('wp_enqueue_scripts', 'search_google_unqprfx_enqueue_scripts');
+
+
+function search_google_unqprfx_load_textdomain() { // i18n
+	load_plugin_textdomain('search-google', false, dirname( plugin_basename(__FILE__) ) . '/languages');
+}
+add_action('plugins_loaded', 'search_google_unqprfx_load_textdomain');
 
 
 function search_google_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
