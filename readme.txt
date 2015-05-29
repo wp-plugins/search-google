@@ -3,12 +3,12 @@ Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
 Tags: google, search, widget, sidebar
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.5
+Tested up to: 4.4
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Search by Google widget
+Search by Google widget.
 
 == Description ==
 
@@ -37,6 +37,10 @@ Search by Google widget
 3. Google search page after form submit
 
 == Changelog ==
+
+= 1.6 - 2015-05-28 =
+* Minor bugfixing
+* Code cleanup
 
 = 1.5 - 2012-11-07 =
 * minor changes

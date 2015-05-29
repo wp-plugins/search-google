@@ -1,16 +1,18 @@
 <?php
 /*
 Plugin Name: Search by Google
-Plugin URI: http://wordpress.org/extend/plugins/search-google/
+Plugin URI: http://wordpress.org/plugins/search-google/
 Description: Google search on site widget
-Version: 1.5
+Version: 1.6
 Author: webvitaly
 Author URI: http://profiles.wordpress.org/webvitaly/
-License: GPLv2 or later
+License: GPLv3
 
 Future features:
 - add support of multiple widgets with search-by-google form;
 */
+
+define('SEARCH_GOOGLE_VERSION', '1.6');
 
 class WP_Widget_Search_Google extends WP_Widget {
 
@@ -31,14 +33,12 @@ class WP_Widget_Search_Google extends WP_Widget {
 		}
 		
 ?>
-		<!-- Search by Google plugin v.1.5 wordpress.org/extend/plugins/search-google/ -->
+		<!-- Search by Google plugin v.<?php echo SEARCH_GOOGLE_VERSION; ?> wordpress.org/plugins/search-google/ -->
 		<form method="get" id="tsf" action="http://www.google.com/search" class="search_google_form">
-			<fieldset>
-				<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
-				<input type="hidden" name="pseudosite" class="pseudosite" value="site:<?php echo $site_search; ?>" />
-				<input type="text" name="q" class="searchgoogle" title="Search by Google" value="site:<?php echo $site_search; ?> " />
-				<input type="submit" name="btnG" value="<?php echo $submit_text; ?>" />
-			</fieldset>
+			<input type="text" name="pseudoq" class="pseudoq" title="Search by Google" value="" />
+			<input type="hidden" name="pseudosite" class="pseudosite" value="site:<?php echo $site_search; ?>" />
+			<input type="text" name="q" class="searchgoogle" title="Search by Google" value="site:<?php echo $site_search; ?> " />
+			<input type="submit" name="btnG" value="<?php echo $submit_text; ?>" />
 		</form>
 <?php
 		echo $after_widget;
@@ -61,15 +61,17 @@ class WP_Widget_Search_Google extends WP_Widget {
 		
 ?>
 			<p>
-				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('submit_text'); ?>" name="<?php echo $this->get_field_name('submit_text'); ?>" type="text" value="<?php echo esc_attr($submit_text); ?>" />
+				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php _e('Submit button text:'); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id('submit_text'); ?>" name="<?php echo $this->get_field_name('submit_text'); ?>" type="text" value="<?php echo esc_attr($submit_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('site_search'); ?>" name="<?php echo $this->get_field_name('site_search'); ?>" type="text" value="<?php echo esc_attr($site_search); ?>" />
+				<label for="<?php echo $this->get_field_id('site_search'); ?>"><?php _e('Search on site:'); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id('site_search'); ?>" name="<?php echo $this->get_field_name('site_search'); ?>" type="text" value="<?php echo esc_attr($site_search); ?>" />
 			</p>
-			
 			
 <?php
 	}
@@ -77,14 +79,14 @@ class WP_Widget_Search_Google extends WP_Widget {
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Search_Google");'));
 
 
-function search_google_unqprfx_scripts_styles_init() {
+function search_google_unqprfx_enqueue_scripts() {
 	if (!is_admin()) {
 		//wp_enqueue_script('jquery');
-		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), '1.5' );
-		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, '1.5', 'all' );
+		wp_enqueue_script( 'search-google-script', plugins_url( '/js/search-google.js', __FILE__ ), array('jquery'), SEARCH_GOOGLE_VERSION );
+		wp_enqueue_style( 'search-google-style', plugins_url( '/css/search-google.css', __FILE__ ), false, SEARCH_GOOGLE_VERSION, 'all' );
 	}
 }
-add_action('init', 'search_google_unqprfx_scripts_styles_init');
+add_action('wp_enqueue_scripts', 'search_google_unqprfx_enqueue_scripts');
 
 
 function search_google_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
