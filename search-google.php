@@ -3,7 +3,7 @@
 Plugin Name: Search by Google
 Plugin URI: http://wordpress.org/plugins/search-google/
 Description: Google search on site widget
-Version: 1.7
+Version: 1.8
 Author: webvitaly
 Author URI: http://profiles.wordpress.org/webvitaly/
 License: GPLv3
@@ -12,16 +12,17 @@ Future features:
 - add support of multiple widgets with search-by-google form;
 */
 
-define('SEARCH_GOOGLE_VERSION', '1.6');
+define('SEARCH_GOOGLE_VERSION', '1.8');
 
 class WP_Widget_Search_Google extends WP_Widget {
 
-	function WP_Widget_Search_Google() {
+	public function __construct() { // widget actual processes
 		$widget_ops = array('classname' => 'widget_search_google', 'description' => __( 'Search by Google widget' , 'search-google') );
 		$this->WP_Widget('search_google', __('Search by Google', 'search-google'), $widget_ops);
 	}
 	
-	function widget( $args, $instance ) {
+	
+	public function widget( $args, $instance ) { // outputs the content of the widget
 		extract($args);
 		$title = apply_filters('widget_title', $instance['title']);
 		$submit_text = empty($instance['submit_text']) ? __('Search by Google', 'search-google') : $instance['submit_text'];
@@ -44,16 +45,8 @@ class WP_Widget_Search_Google extends WP_Widget {
 		echo $after_widget;
 	}
 
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search by Google', 'search-google'), 'site_search' => get_bloginfo('url') ) );
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['submit_text'] = strip_tags($new_instance['submit_text']);
-		$instance['site_search'] = strip_tags($new_instance['site_search']);
-		return $instance;
-	}
-
-	function form( $instance ) {
+	
+	public function form( $instance ) { // outputs the options form on admin
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'submit_text' => 'Google search', 'site_search' => get_bloginfo('url') ) );
 		$title = strip_tags($instance['title']);
 		$submit_text = strip_tags($instance['submit_text']);
@@ -76,6 +69,17 @@ class WP_Widget_Search_Google extends WP_Widget {
 			
 <?php
 	}
+	
+	
+	public function update( $new_instance, $old_instance ) { // processes widget options to be saved
+		$instance = $old_instance;
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'submit_text' => __('Search by Google', 'search-google'), 'site_search' => get_bloginfo('url') ) );
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['submit_text'] = strip_tags($new_instance['submit_text']);
+		$instance['site_search'] = strip_tags($new_instance['site_search']);
+		return $instance;
+	}
+	
 }
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Search_Google");'));
 
